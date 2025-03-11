@@ -1,17 +1,13 @@
 # Simple Permissions
 
-simple-permissions is a lightweight TypeScript library for managing permissions using bitwise operations. It allows you to easily convert permission strings into bitwise numbers and vice versa, making it perfect for access control, feature flags, and role-based systems.
+`simple-perms` is a lightweight TypeScript library for managing permissions using bitwise operations. It allows you to easily convert permission strings into bitwise numbers and vice versa, making it perfect for access control, feature flags, and role-based systems.
 
 ## Features
 
 - Convert permissions to bitwise numbers: Combine permission strings into a single number.
-
 - Convert bitwise numbers to permissions: Extract permission strings from a bitwise number.
-
 - Validation: Throws an error for invalid permissions.
-
 - Lightweight: No dependencies, just pure TypeScript.
-
 
 ## Installation
 
@@ -22,56 +18,6 @@ npm install simple-perms
 ```
 
 ## Usage
-
-### Importing the Class
-
-```typescript
-import Permissions from 'simple-perms';
-```
-
-### Creating an Instance
-
-To create an instance of the `Permissions` class, pass an array of permission strings to the constructor. These strings represent the available permissions.
-
-```typescript
-const permissions = new Permissions([
-    "read",
-    "write",
-    "delete",
-    "admin"
-]);
-```
-
-### Methods
-
-#### `to(perms: string[]): number`
-
-Converts an array of permission strings into a bitwise number.
-
-- **Parameters**:
-  - `perms`: An array of permission strings (e.g., `["read", "write"]`).
-- **Returns**: A bitwise number representing the combined permissions.
-- **Throws**: An error if any permission in `perms` is not in the original permissions array.
-
-```typescript
-const bitwisePerms = permissions.to(["read", "write"]);
-console.log(bitwisePerms); // Output: 3
-```
-
-#### `from(bitwisePerms: number): string[]`
-
-Converts a bitwise number back into an array of permission strings.
-
-- **Parameters**:
-  - `bitwisePerms`: A bitwise number representing the combined permissions.
-- **Returns**: An array of permission strings.
-
-```typescript
-const permsArray = permissions.from(3);
-console.log(permsArray); // Output: ["read", "write"]
-```
-
-### Example
 
 Here’s a complete example demonstrating how to use the `Permissions` class:
 
@@ -102,7 +48,36 @@ try {
 }
 ```
 
-### How It Works
+## Methods
+
+### `to(perms: string[]): number`
+
+Converts an array of permission strings into a bitwise number.
+
+- **Parameters**:
+  - `perms`: An array of permission strings (e.g., `["read", "write"]`).
+- **Returns**: A bitwise number representing the combined permissions.
+- **Throws**: An error if any permission in `perms` is not in the original permissions array.
+
+```typescript
+const bitwisePerms = permissions.to(["read", "write"]);
+console.log(bitwisePerms); // Output: 3
+```
+
+### `from(bitwisePerms: number): string[]`
+
+Converts a bitwise number back into an array of permission strings.
+
+- **Parameters**:
+  - `bitwisePerms`: A bitwise number representing the combined permissions.
+- **Returns**: An array of permission strings.
+
+```typescript
+const permsArray = permissions.from(3);
+console.log(permsArray); // Output: ["read", "write"]
+```
+
+## How It Works
 
 1. **Bitwise Mapping**:
    - Each permission string is assigned a unique bitwise value using `1 << index`. For example:
@@ -122,7 +97,7 @@ try {
      - `3 & 4` → `0` (false for `"delete"`)
      - `3 & 8` → `0` (false for `"admin"`)
 
-### Error Handling
+## Error Handling
 
 - If you pass an invalid permission to the `to` method, it will throw an error:
   ```typescript
@@ -133,7 +108,7 @@ try {
   }
   ```
 
-### Use Cases
+## Use Cases
 
 - **Access Control**: Manage user permissions in an application.
 - **Feature Flags**: Enable or disable features based on permissions.
