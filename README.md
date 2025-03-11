@@ -25,7 +25,7 @@ Here’s a complete example demonstrating how to use the `Permissions` class:
 import Permissions from 'simple-perms';
 
 // Initialize with available permissions
-const permissions = new Permissions([
+const perms = new Permissions([
     "read",
     "write",
     "delete",
@@ -33,16 +33,20 @@ const permissions = new Permissions([
 ]);
 
 // Convert permissions to a bitwise number
-const bitwisePerms = permissions.to(["read", "write"]);
+const bitwisePerms = perms.to(["read", "write"]);
 console.log(bitwisePerms); // Output: 3
 
 // Convert the bitwise number back to permissions
-const permsArray = permissions.from(3);
+const permsArray = perms.from(3);
 console.log(permsArray); // Output: ["read", "write"]
+
+// Check if a permission has a flag
+const hasRead = perms.from(3).contains("read")
+console.log(hasRead) // Output: True
 
 // Handling invalid permissions
 try {
-    const invalidPerms = permissions.to(["read", "invalid"]);
+    const invalidPerms = perms.to(["read", "invalid"]);
 } catch (error) {
     console.error(error.message); // Output: Invalid permission: invalid
 }
