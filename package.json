@@ -1,11 +1,35 @@
 {
   "scripts": {
     "test": "jest",
-    "dev": "tsx --watch dev"
+    "dev": "tsx --watch dev",
+    "build": "tsc src/index.ts --outDir dist"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "ts-jest": "^29.2.6",
-    "tsx": "^4.19.3"
-  }
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "name": "simple-perms",
+  "version": "0.1.1",
+  "description": "Bitwise permissions made easy.",
+  "main": "dist/index.js",
+  "files": [
+    "dist/index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doodad-labs/simple-permissions.git"
+  },
+  "keywords": [
+    "permissions"
+  ],
+  "author": "reece harris",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/doodad-labs/simple-permissions/issues"
+  },
+  "homepage": "https://github.com/doodad-labs/simple-permissions#readme"
 }
